@@ -1,8 +1,10 @@
 plugins {
     id 'java'
-    id 'idea'
-    id 'eclipse'
-    id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id 'application'
+}
+
+application {
+    mainClass = 'ProducerEx'
 }
 
 java {
@@ -28,18 +30,4 @@ dependencies {
     // needed if OAuth is used; otherwise this can be left out.
     // See: https://docs.confluent.io/platform/current/kafka/authentication_sasl/authentication_sasl_oauth.html
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.15.2'
-}
-
-jar {
-    manifest {
-        attributes(
-                "Class-Path": configurations.compileClasspath.collect { it.getName() }.join(" "),
-                "Main-Class": "io.confluent.developer.ProducerExample"
-        )
-    }
-}
-
-shadowJar {
-    archiveBaseName = "kafka-java-getting-started"
-    archiveClassifier = ''
 }

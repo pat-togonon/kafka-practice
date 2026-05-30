@@ -21,7 +21,7 @@ public class ProducerEx {
         final String topic = "purchases";
 
         String[] users = { "pat94", "mela", "chess16", "laine", "ferdz" };
-        String[] items = { "book", "t-shirt", "food-tray", "keyboard", "dress" };
+        String[] items = { "autumn-trip-to-japan", "trip-to-boracay", "trip-to-baguio", "winter-trip-to-south-korea", "winter-trip-to-jiuzhaigou-china" };
 
         try (final Producer<String, String> producer = new KafkaProducer<>(props)) {
             final Random rnd = new Random();
@@ -37,7 +37,7 @@ public class ProducerEx {
                                 ex.printStackTrace();
                             }
                             else {
-                                System.out.printf("Produced event to topic $s: key = %-10s value = %s%n", topic, user, item);
+                                System.out.printf("Produced event to topic %s: key = %-10s value = %s%n", topic, user, item);
                             }
                         }
                 );
